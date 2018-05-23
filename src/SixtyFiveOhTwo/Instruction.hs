@@ -12,11 +12,14 @@ data InstructionState = InstructionState {
     -- The functionTable relates functions to their byte offsets in the compiled code
     _functionTable :: M.Map String Int,
     _bytestring :: B.ByteString
-}
+} deriving Show
 makeLenses ''InstructionState
+emptyState :: InstructionState
+emptyState = InstructionState { _functionTable = M.empty, _bytestring = B.empty }
 
 type Instruction = State InstructionState InstructionState
 
+-- Remember, it's little endian
 data AddressingMode = 
     Implied | 
     Accumulator | 
@@ -33,6 +36,8 @@ data AddressingMode =
     IndirectX Word8 | 
     IndirectY Word8
 
+appendBytes :: [Word8] -> InstructionState -> InstructionState
+appendBytes bytes insState = over bytestring (\bs -> B.append bs (B.pack bytes)) insState
 
 define :: String -> Instruction -> Instruction
 define name definition = do
@@ -44,4 +49,10 @@ define name definition = do
 adc :: AddressingMode -> Instruction
 adc (Immediate b) = do
     insState <- get
-    return $ over bytestring (\bs -> B.append bs (B.pack [0x69, b])) insState
+    return $ appendBytes [0x69, b] insState
+adc (ZeroPage b) = do
+    insState <- get
+    return $ appendBytes [0x65, b] insState
+adc (ZeroPageX b) = do
+    insState <- get
+    return $ appendBytes [0x75, b] insState
