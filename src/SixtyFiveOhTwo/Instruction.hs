@@ -21,6 +21,10 @@ emptyState = InstructionState { _functionTable = M.empty, _bytestring = B.empty 
 
 type Instruction = State InstructionState InstructionState
 
+-- This function converts the instructions into a usable bytestring. It's the meat and bones of this DSL.
+runInstructions :: Instruction -> B.ByteString
+runInstructions ins = (execState ins emptyState) ^. bytestring
+
 -- Remember, it's little endian
 data AddressingMode =
     Implied |
@@ -72,7 +76,7 @@ genericTwoByteOp op arg = do
     insState <- get
     return $ appendBytesThenWord [op] arg insState
 
--- This allows you to define functions which can be called later using `call`.
+-- This allows you to define subroutines which can be called later using `call`.
 -- Note: your function must end with an `rts`, I don't add that automatically
 define :: String -> Instruction -> Instruction
 define name definition = do
@@ -81,6 +85,7 @@ define name definition = do
     -- TODO: COMBINE THE FUNCTION DEFINITIONS HERE TOO NOT JUST BYTESTRINGS
     return $ execState definition insState'
 
+-- This can be used to call subroutines which were previously `define`d.
 call :: String -> Instruction
 call name = do
     insState <- get
