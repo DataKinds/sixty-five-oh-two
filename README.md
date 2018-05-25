@@ -1,5 +1,7 @@
 # A 65C02 Assembly DSL for Haskell
 
+![Example image](https://raw.githubusercontent.com/Aearnus/dsl-sixty-five-oh-two/master/fancy_banner.png)
+
 _... shut up, show me the code!_
 
 Here's some example code utilizing all of the features of the DSL:
@@ -20,4 +22,4 @@ myProgram = do
 ```
 (taken from main.hs)
 
-More documentation coming soon! 
+More documentation coming soon!
