@@ -2,6 +2,7 @@ module Main where
 
 import SixtyFiveOhTwo.Instruction
 import Control.Monad.State
+import qualified Data.ByteString as B
 
 accumulatorLoadNStore :: Instruction
 accumulatorLoadNStore = do
@@ -15,4 +16,4 @@ myProgram = do
     call "accumulatorLoadNStore"
 
 main :: IO ()
-main = print $ runState myProgram emptyState
+main = B.putStr $ runInstructions myProgram
