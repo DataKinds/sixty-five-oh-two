@@ -15,4 +15,4 @@ myProgram = do
     call "accumulatorLoadNStore"
 
 main :: IO ()
-main = print $ execState myProgram emptyState
+main = print $ runState myProgram emptyState
