@@ -31,9 +31,8 @@ test3f2 = replicateM_ 10 (inc (Accumulator))
 Everything that this module exposes is in [src/DSL/SixtyFiveOhTwo.hs](https://github.com/Aearnus/dsl-sixty-five-oh-two/blob/master/src/DSL/SixtyFiveOhTwo.hs). A quick browse through this file will reveal the full extent of the features of this eDSL.
 
 ## What does the language provide me?
-### <div style="width=100%;text-align:center">The entire breadth of 65C02 opcodes</div>
 
-* Full coverage. Everything bit of code that the 65C02 can understand is represented in this language. Everywhere `adc`  to `wai` can be used. These opcodes are represented as generic operations, each of which simply append to the bytecode that gets passed into it. Here's an example of the definition for a certain opcode:
+* **Full coverage**. Everything bit of code that the 65C02 can understand is represented in this language. Everywhere `adc`  to `wai` can be used. These opcodes are represented as generic operations, each of which simply append to the bytecode that gets passed into it. Here's an example of the definition for a certain opcode:
 ```haskell
 lda :: AddressingMode -> Instruction
 lda (Immediate b) = genericOp 169 b
@@ -47,7 +46,7 @@ lda (IndirectX b) = genericOp 161 b
 lda (IndirectY b) = genericOp 177 b
 ```
 
-* Type safety. Every addressing mode is represented the Haskell type system, and thus issues will be caught at compile time. The `AddressingMode` ADT is used to represent a function's addressing mode, and opcodes do not take addressing modes that they do not support.
+* **Type safety**. Every addressing mode is represented the Haskell type system, and thus issues will be caught at compile time. The `AddressingMode` ADT is used to represent a function's addressing mode, and opcodes do not take addressing modes that they do not support.
 ```haskell
 data AddressingMode =
     Implied |
@@ -68,4 +67,4 @@ data AddressingMode =
 ```
 
 
-* Easy abstractions. The `define` and `call` keywords automatically generate the code necessary to create and call subroutines.
+* **Easy abstractions**. The `define` and `call` keywords automatically generate the code necessary to create and call subroutines.
