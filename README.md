@@ -7,7 +7,7 @@ _... shut up, show me the code!_
 Here's some example code utilizing all of the features of the eDSL:
 
 ```haskell
-import SixtyFiveOhTwo.Instruction
+import DSL.SixtyFiveOhTwo
 
 accumulatorLoadNStore :: Instruction
 accumulatorLoadNStore = do
