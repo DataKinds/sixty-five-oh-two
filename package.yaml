@@ -1,5 +1,5 @@
 name:                sixty-five-oh-two
-version:             1.0.0.0
+version:             1.1.0.0
 github:              "aearnus/sixty-five-oh-two"
 license:             MIT
 author:              "Tyler Limkemann"
@@ -28,17 +28,6 @@ dependencies:
 
 library:
   source-dirs: src
-
-executables:
-  sixty-five-oh-two-exe:
-    main:                Main.hs
-    source-dirs:         app
-    ghc-options:
-    - -threaded
-    - -rtsopts
-    - -with-rtsopts=-N
-    dependencies:
-    - sixty-five-oh-two
 
 tests:
   sixty-five-oh-two-test:
