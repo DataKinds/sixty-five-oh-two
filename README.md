@@ -4,7 +4,7 @@
 
 _... shut up, show me the code!_
 
-Here's some example code utilizing all of the features of the DSL:
+Here's some example code utilizing all of the features of the eDSL:
 
 ```haskell
 import SixtyFiveOhTwo.Instruction
@@ -20,6 +20,12 @@ myProgram = do
     define "accumulatorLoadNStore" accumulatorLoadNStore
     call "accumulatorLoadNStore"
 ```
-(taken from main.hs)
+
+Here's a fun little snippet that adds 10 to the accumulator using Haskell Monad Magic:
+
+```haskell
+test3f2 :: Instruction
+test3f2 = replicateM_ 10 (inc (Accumulator))
+```
 
 More documentation coming soon!
