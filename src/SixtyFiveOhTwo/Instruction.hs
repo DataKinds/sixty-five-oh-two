@@ -7,6 +7,7 @@ import qualified Data.ByteString as B
 import qualified Data.Map.Strict as M
 import Control.Lens
 import Data.Word
+import Data.Int
 import Data.Bits
 
 data InstructionState = InstructionState {
@@ -30,8 +31,8 @@ data AddressingMode =
     Implied |
     Accumulator |
     Immediate Word8 |
-    Relative Word8 | -- Signed
-    ZeroPageRelative Word8 | -- Signed
+    Relative Int8 | -- Signed
+    ZeroPageRelative Int8 | -- Signed
     Absolute Word16 |
     AbsoluteX Word16 |
     AbsoluteY Word16 |
@@ -63,8 +64,11 @@ genericNoByteOp :: Word8 -> Instruction
 genericNoByteOp op = modify $ appendBytes [op]
 
 -- This function allows you to define an instruction opcode that takes a one byte argument
-genericOp :: Word8 -> Word8 -> Instruction
-genericOp op arg = modify $ appendBytes [op, arg]
+-- This is polymorphic to support Int8 OR Word8
+genericOp :: (FiniteBits a, Integral a) => Word8 -> a -> Instruction
+-- fromIntegral from an IntN to a WordN does _not_ preserve value, only structure
+-- Thus, this is valid code.
+genericOp op arg = modify $ appendBytes [op, fromIntegral arg]
 
 --  This function allows you to define an instruction opcode that takes a two byte argument
 genericTwoByteOp :: Word8 -> Word16 -> Instruction
