@@ -1,5 +1,5 @@
 # DSL.SixtyFiveOhTwo: A 65C02 Assembly eDSL in Haskell
-[![Hackage](https://img.shields.io/hackage/v/sixty-five-oh-two.svg)](https://hackage.haskell.org/package/sixty-five-oh-two) ![100% 65C02 Coverage](https://img.shields.io/badge/65C02%20coverage-100%25-brightgreen.svg) ![GitHub stars](https://img.shields.io/github/stars/badges/shields.svg?style=social&label=Stars)
+[![Hackage](https://img.shields.io/hackage/v/sixty-five-oh-two.svg)](https://hackage.haskell.org/package/sixty-five-oh-two) ![100% 65C02 Coverage](https://img.shields.io/badge/65C02%20coverage-100%25-brightgreen.svg) ![GitHub stars](https://img.shields.io/github/stars/Aearnus/sixty-five-oh-two.svg?style=social&label=Stars)
 
 ![Example image](https://raw.githubusercontent.com/Aearnus/sixty-five-oh-two/master/fancy_banner.png)
 
