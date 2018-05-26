@@ -1,6 +1,6 @@
 # DSL.SixtyFiveOhTwo: A 65C02 Assembly eDSL in Haskell
 
-![Example image](https://raw.githubusercontent.com/Aearnus/dsl-sixty-five-oh-two/master/fancy_banner.png)
+![Example image](https://raw.githubusercontent.com/Aearnus/sixty-five-oh-two/master/fancy_banner.png)
 
 _... shut up, show me the code!_
 
@@ -28,7 +28,7 @@ test3f2 :: Instruction
 test3f2 = replicateM_ 10 (inc (Accumulator))
 ```
 
-Everything that this module exposes is in [src/DSL/SixtyFiveOhTwo.hs](https://github.com/Aearnus/dsl-sixty-five-oh-two/blob/master/src/DSL/SixtyFiveOhTwo.hs). A quick browse through this file will reveal the full extent of the features of this eDSL.
+Everything that this module exposes is in [src/DSL/SixtyFiveOhTwo.hs](https://github.com/Aearnus/sixty-five-oh-two/blob/master/src/DSL/SixtyFiveOhTwo.hs). A quick browse through this file will reveal the full extent of the features of this eDSL.
 
 ## What is this?
 

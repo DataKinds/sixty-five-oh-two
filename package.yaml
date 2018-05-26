@@ -1,6 +1,6 @@
-name:                dsl-sixty-five-oh-two
-version:             0.1.0.0
-github:              "aearnus/dsl-sixty-five-oh-two"
+name:                sixty-five-oh-two
+version:             1.0.0.0
+github:              "aearnus/sixty-five-oh-two"
 license:             MIT
 author:              "Tyler Limkemann"
 maintainer:          "tslimkemann42@gmail.com"
@@ -17,7 +17,7 @@ category:            DSL
 # To avoid duplicated efforts in documentation and dealing with the
 # complications of embedding Haddock markup inside cabal files, it is
 # common to point users to the README.md file.
-description:         An eDSL for writing 65(C)02 bytecode. Please see the README on GitHub at <https://github.com/aearnus/dsl-sixty-five-oh-two#readme>
+description:         An eDSL for writing 65(C)02 bytecode. Please see the README on GitHub at <https://github.com/aearnus/sixty-five-oh-two#readme>
 
 dependencies:
 - base >= 4.7 && < 5
@@ -30,7 +30,7 @@ library:
   source-dirs: src
 
 executables:
-  dsl-sixty-five-oh-two-exe:
+  sixty-five-oh-two-exe:
     main:                Main.hs
     source-dirs:         app
     ghc-options:
@@ -38,10 +38,10 @@ executables:
     - -rtsopts
     - -with-rtsopts=-N
     dependencies:
-    - dsl-sixty-five-oh-two
+    - sixty-five-oh-two
 
 tests:
-  dsl-sixty-five-oh-two-test:
+  sixty-five-oh-two-test:
     main:                Spec.hs
     source-dirs:         test
     ghc-options:
@@ -49,4 +49,4 @@ tests:
     - -rtsopts
     - -with-rtsopts=-N
     dependencies:
-    - dsl-sixty-five-oh-two
+    - sixty-five-oh-two
