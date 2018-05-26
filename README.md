@@ -30,6 +30,10 @@ test3f2 = replicateM_ 10 (inc (Accumulator))
 
 Everything that this module exposes is in [src/DSL/SixtyFiveOhTwo.hs](https://github.com/Aearnus/dsl-sixty-five-oh-two/blob/master/src/DSL/SixtyFiveOhTwo.hs). A quick browse through this file will reveal the full extent of the features of this eDSL.
 
+## What is this?
+
+This is an **e**mbedded **D**omain **S**pecific **L**anguage **** that allows a user to write code that runs on the 65C02 CPU. This is the CPU that runs devices such as the Apple II, Commodore 64, or the NES.
+
 ## What does the language provide me?
 
 * **Full coverage**. Everything bit of code that the 65C02 can understand is represented in this language. Everywhere `adc`  to `wai` can be used. These opcodes are represented as generic operations, each of which simply append to the bytecode that gets passed into it. Here's an example of the definition for a certain opcode:
@@ -68,3 +72,7 @@ data AddressingMode =
 
 
 * **Easy abstractions**. The `define` and `call` keywords automatically generate the code necessary to create and call subroutines.
+
+## Support or Donate
+
+Please contact me if you have any wish to support this project or any other projects I've worked on. The information is in `package.yaml`.
