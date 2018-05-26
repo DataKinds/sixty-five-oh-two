@@ -1,6 +1,6 @@
 {-# LANGUAGE TemplateHaskell #-}
 
-module SixtyFiveOhTwo.Instruction where
+module DSL.SixtyFiveOhTwo where
 
 import Control.Monad.State
 import qualified Data.ByteString as B

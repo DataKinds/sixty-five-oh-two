@@ -1,6 +1,6 @@
 module Main where
 
-import SixtyFiveOhTwo.Instruction
+import DSL.SixtyFiveOhTwo
 import Control.Monad.State
 import qualified Data.ByteString as B
 import Data.Int
