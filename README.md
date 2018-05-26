@@ -32,7 +32,7 @@ Everything that this module exposes is in [src/DSL/SixtyFiveOhTwo.hs](https://gi
 
 ## What is this?
 
-This is an **e**mbedded **D**omain **S**pecific **L**anguage **** that allows a user to write code that runs on the 65C02 CPU. This is the CPU that runs devices such as the Apple II, Commodore 64, or the NES.
+This is an **e**mbedded **D**omain **S**pecific **L**anguage that allows a user to write code that runs on the 65C02 CPU. This is the CPU that runs devices such as the Apple II, Commodore 64, or the NES.
 
 ## What does the language provide me?
 
