@@ -71,13 +71,29 @@ genericTwoByteOp :: Word8 -> Word16 -> Instruction
 genericTwoByteOp op arg = modify $ appendBytesThenWord [op] arg
 
 -- This allows you to define subroutines which can be called later using `call`.
--- Note: your function must end with an `rts`, I don't add that automatically
+-- NOTE: your function must end with an `rts`. This is not added implicitly to
+-- be able to use this function to create branching case statements or the like.
 define :: String -> Instruction -> Instruction
 define name definition = do
     insState <- get
-    let insState' = over functionTable (\fT -> M.insert name (B.length $ insState ^. bytestring) fT) insState
-    -- TODO: COMBINE THE FUNCTION DEFINITIONS HERE TOO NOT JUST BYTESTRINGS
-    put $ execState definition insState'
+    let functionOffset = B.length $ insState ^. bytestring
+    let modifyFunctionTable = \table ->
+            M.insert name functionOffset table
+    -- insState' is the modified state before definition compilation
+    let insState' = over functionTable modifyFunctionTable insState
+    -- insState'' is the modified state after definition compilation
+    let insState'' = execState definition insState'
+    -- The final state uses these following things:
+    --   The compiled bytestring from insState''
+    --   The function table from insState', WITH the additions from insState'' modified properly
+    let newlyDefinedFunctions = M.difference (insState'' ^. functionTable) (insState' ^. functionTable)
+    -- NOTE: because of the order of the next line, function shadowing in the DSL is impossible. the first
+    -- definition is always the one that's used.
+    -- The fmap is done to shift any definitions made inside this definition to their correct positions
+    -- in the global scope.
+    let finalFunctionTable = M.union (insState' ^. functionTable) (fmap (+ functionOffset) (insState'' ^. functionTable))
+    let finalInsState = set functionTable finalFunctionTable insState''
+    put finalInsState
 
 -- This can be used to call subroutines which were previously `define`d.
 call :: String -> Instruction
