@@ -29,7 +29,7 @@ data AddressingMode (k :: AddressingKind) where
     Accumulator :: AddressingMode 'AccumulatorKind
     Immediate :: Word8 -> AddressingMode 'ImmediateKind
     Relative :: Int8 -> AddressingMode 'RelativeKind -- Signed
-    ZeroPageRelative :: Int8 -> AddressingMode 'ZeroPageKind -- Signed
+    ZeroPageRelative :: Int8 -> AddressingMode 'ZeroPageRelativeKind -- Signed
     Absolute :: Word16 -> AddressingMode 'AbsoluteKind
     AbsoluteX :: Word16 -> AddressingMode 'AbsoluteXKind
     AbsoluteY :: Word16 -> AddressingMode 'AbsoluteYKind
